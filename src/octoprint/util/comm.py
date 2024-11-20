@@ -3379,6 +3379,9 @@ class MachineCom:
         elif self._state in self.PRINTING_STATES + (self.STATE_PAUSED,):
             # printing, try to tickle the printer
             message = "Communication timeout while printing, trying to trigger response from printer."
+            self._to_logfile_with_terminal(
+                       message
+                    )
             self._logger.info(message)
             self._log(message + " " + general_message)
             if self._sendCommand(
