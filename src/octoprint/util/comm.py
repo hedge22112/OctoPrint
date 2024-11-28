@@ -2573,7 +2573,7 @@ class MachineCom:
                 handled = False
 
                 # process oks
-                if line.startswith("ok") or (
+                if line.startswith("ok") or line.endswith("ok") or (
                     self.isPrinting() and supportWait and line == "wait"
                 ):
                     # ok only considered handled if it's alone on the line, might be
