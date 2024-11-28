@@ -3346,7 +3346,8 @@ class MachineCom:
             message = "No response from printer after {} consecutive communication timeouts, considering it dead.".format(
                 consecutive_max + 1
             )
-            self._logger.info(message)
+            # self._logger.info(message)
+            self._to_logfile_with_terminal(message, logging.WARNING)
             self._log(message + " " + general_message)
             self._errorValue = (
                 "Too many consecutive timeouts, printer still connected and alive?"
@@ -3359,7 +3360,8 @@ class MachineCom:
         elif self._resendActive:
             # resend active, resend same command instead of triggering a new one
             message = "Communication timeout during an active resend, resending same line again to trigger response from printer."
-            self._logger.info(message)
+            # self._logger.info(message)
+            self._to_logfile_with_terminal(message, logging.WARNING)
             self._log(message + " " + general_message)
             if self._resendSameCommand():
                 self._clear_to_send.set()
@@ -3379,10 +3381,7 @@ class MachineCom:
         elif self._state in self.PRINTING_STATES + (self.STATE_PAUSED,):
             # printing, try to tickle the printer
             message = "Communication timeout while printing, trying to trigger response from printer."
-            self._to_logfile_with_terminal(
-                       message
-                    )
-            self._logger.info(message)
+            self._to_logfile_with_terminal(message, logging.WARNING)
             self._log(message + " " + general_message)
             if self._sendCommand(
                 "M105", cmd_type="temperature", tags={"trigger:comm.handle_timeout"}
