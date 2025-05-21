@@ -1,7 +1,7 @@
 import os
 import re
 
-from pydantic import BaseModel
+from octoprint.schema import BaseModel
 
 ROMAN_NUMERAL = re.compile(
     "^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$", re.IGNORECASE
@@ -75,7 +75,7 @@ class Achievements(metaclass=AchievementsMetaClass):
 
     TINKERER = Achievement(
         name="The Tinkerer",
-        description="Install a plugin from a URL.",
+        description="Install a plugin from a URL or an uploaded file.",
     )
 
     BETTER_SAFE_THAN_SORRY = Achievement(
@@ -304,7 +304,7 @@ if __name__ == "__main__":
     print(
         json.dumps(
             {
-                a.key: {"name": a.name, "hidden": a.hidden}
+                a.key: {"name": a.name, "description": a.description, "hidden": a.hidden}
                 for a in sorted(achievements, key=lambda x: x.key)
             },
             indent=2,

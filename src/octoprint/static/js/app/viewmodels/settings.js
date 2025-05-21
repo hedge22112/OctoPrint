@@ -152,6 +152,7 @@ $(function () {
         self.webcam_ffmpegThreads = ko.observable(undefined);
         self.webcam_ffmpegVideoCodec = ko.observable(undefined);
         self.webcam_watermark = ko.observable(undefined);
+        self.webcam_renderAfterPrintDelay = ko.observable(undefined);
         self.webcam_defaultWebcam = ko.observable(undefined);
         self.webcam_snapshotWebcam = ko.observable(undefined);
         self.webcam_webcams = ko.observableArray([]);
@@ -165,6 +166,7 @@ $(function () {
         self.feature_printStartConfirmation = ko.observable(undefined);
         self.feature_printCancelConfirmation = ko.observable(undefined);
         self.feature_uploadOverwriteConfirmation = ko.observable(undefined);
+        self.feature_fileDeleteConfirmation = ko.observable(undefined);
         self.feature_g90InfluencesExtruder = ko.observable(undefined);
         self.feature_autoUppercaseBlacklist = ko.observable(undefined);
         self.feature_enableDragDropUpload = ko.observable(undefined);

@@ -45,6 +45,13 @@
     <div class="control-group">
         <div class="controls">
             <label class="checkbox">
+                <input type="checkbox" data-bind="checked: feature_fileDeleteConfirmation" id="settings-fileDeleteConfirmation"> {{ _('Confirm before deleting a file') }}
+            </label>
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+            <label class="checkbox">
                 <input type="checkbox" data-bind="checked: feature_enableDragDropUpload" id="settings-enableDragDropUpload"> {{ _('Enable drag and drop upload overlay') }}
             </label>
         </div>
